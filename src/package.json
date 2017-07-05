@@ -1,6 +1,6 @@
 {
   "name": "react-bootstrap-data-table",
-  "version": "0.0.18",
+  "version": "1.0.1",
   "description": "A React element for mapping data to a bootstrap styled table.",
   "main": "./build/index.js",
   "repository": "https://github.com/hughbe/react-data-table",

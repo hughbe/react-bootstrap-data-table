@@ -2,7 +2,7 @@
 
 import '../css/DataTable.css';
 
-const getUnknownKeys = (rows) => Object.keys(rows).filter(key => key !== 'orderingKey' && key !== 'cellClassName');
+const getUnknownKeys = (rows) => Object.keys(rows).filter(key => key !== 'orderingKey' && key !== 'cellClassName' && key !== 'displayMapping');
 
 const getHeader = (row) => {
   if (row.name) {
