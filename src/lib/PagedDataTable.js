@@ -30,7 +30,7 @@ export default class PagedDataTable extends Component {
 
   render() {
     const { pageNumber, pageSize, orderingKey } = browserHistory.getCurrentLocation().query;
-    const { mapping, rows, errorMessage, emptyTitle, onRowSelected, defaultOrderingKey } = this.props;
+    const { mapping, rows, errorMessage, emptyTitle, onRowSelected, defaultOrderingKey, alwaysShowPaginationBar } = this.props;
 
     if (rows.data && !rows.data.length) {
       return <ErrorPanel title={emptyTitle} />;
@@ -41,7 +41,7 @@ export default class PagedDataTable extends Component {
 
     return (
       <span>
-        {rows.numberOfPages && (!rows.data || rows.totalCount > rows.data.length) &&
+        {rows.numberOfPages && (!rows.data || rows.totalCount > rows.data.length || alwaysShowPaginationBar) &&
         <PagedDataTableBar pageNumber={actualPageNumber} pageSize={actualPageSize} numberOfPages={rows.numberOfPages}
           onPageSizeChanged={pageSize => addQuery({pageSize})}
           onPageNumberChanged={pageNumber => addQuery({pageNumber})} />
