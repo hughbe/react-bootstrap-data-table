@@ -1,0 +1,86 @@
+/* https://github.com/twbs/bootstrap/issues/22665 */
+
+.thead-inverse a {
+    color: white;
+}
+
+.data-table td,
+.data-table th {
+    vertical-align: middle;
+    max-width: 50vw;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+}
+
+.data-table td.shrink {
+    white-space:nowrap;
+}
+
+.data-table td.expand {
+    width: 99%;
+}
+
+.data-table tbody tr,
+.blank-row {
+    height: 45px;
+}
+
+td p {
+    margin-bottom: 0;
+}
+
+.selectable-row:hover,
+.table-striped .selectable-row:nth-of-type(odd):hover,
+.data-table tr[tabindex]:focus {
+    background-color: #f5f5f5 !important;
+    cursor: pointer;
+}
+
+.selected-row {
+    outline: none;
+}
+
+.display-whitespace {
+    white-space: pre-wrap;
+}
+
+.selected-cell {
+    float: right;
+    margin-right: 1em;
+}
+
+.cell-list {
+    height: 100%;
+}
+
+.cell-list,
+.cell-list td>form {
+    margin: -12px;
+}
+
+.cell-list tr {
+    background-color: initial;
+}
+
+.cell-list .table>tbody>tr:first-child>td {
+    border: 0;
+}
+
+.table-striped tbody .cell-list tr {
+    background-color: white;
+}
+
+.selectable-row:hover .cell-list tr {
+    background-color: #f5f5f5 !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) .cell-list tr {
+    background-color: rgba(0, 0, 0, .05);
+}
+
+.black-link-list a {
+    color: black;
+}

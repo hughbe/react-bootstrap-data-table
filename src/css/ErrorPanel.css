@@ -1,0 +1,17 @@
+.error-panel {
+    padding: 20px;
+}
+
+.error-panel .jumbotron {
+    margin-bottom: 0;
+}
+
+.card-block>.error-panel,
+.card>.error-panel {
+    margin: 0;
+}
+
+.card-block .error-panel .jumbotron,
+.card .error-panel .jumbotron {
+    background-color: white;
+}

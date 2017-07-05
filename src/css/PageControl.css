@@ -1,0 +1,15 @@
+.pagination>li>a,
+.pagination>li>span {
+    min-width: 42px;
+    text-align: center;
+}
+
+@media (max-width: 800px) {
+    .pagination {
+        margin: 0 auto;
+    }
+}
+
+.card .pagination {
+    margin-left: 20px;
+}

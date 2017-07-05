@@ -1,0 +1,43 @@
+/* https://github.com/twbs/bootstrap/issues/22135 */
+
+@media (max-width: 576px) {
+    .card-columns .card {
+        margin-bottom: .75rem;
+    }
+}
+
+.card table,
+.card .table,
+.table-card .form-group {
+    margin-bottom: 0;
+}
+
+.card tr:first-child td,
+.card tr:first-child th {
+    border-top: 0px;
+}
+
+.card-header>.form-group {
+    margin-bottom: 0;
+}
+
+.custom-card-header {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.custom-card-header h4 {
+    margin-bottom: 0;
+}
+
+.custom-card-header .btn {
+    margin-left: 0.75rem;
+}
+
+.card-block,
+.card-footer {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}

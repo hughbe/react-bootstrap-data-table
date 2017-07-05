@@ -1,0 +1,7 @@
+.glyphicon {
+    font-weight: bold;
+}
+
+.btn-primary:focus {
+    color: white;
+}

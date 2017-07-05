@@ -1,0 +1,24 @@
+.paged-data-bar {
+    margin: -5px;
+    display: flex;
+    flex-flow: wrap;
+}
+
+.paged-data-bar .pagination {
+    display: inline-flex;
+    margin-bottom: 0;
+}
+
+.paged-data-bar .paged-form {
+    padding: 5px;
+}
+
+.paged-form .input-group .form-control {
+    min-width: 100px;
+}
+
+@media (max-width: 800px) {
+    .paged-form {
+        display: none;
+    }
+}
