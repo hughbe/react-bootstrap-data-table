@@ -1,15 +1,19 @@
 import React from 'react';
-
 import '../css/Button.css';
 
-const Button = ({ sizeClass, typeClass, className, disabled, onClick, children, dropdown }) => {
+const Button = ({ sizeClass, typeClass, className, disabled, children, ...rest }) => {
   const fullClassName = `btn ${sizeClass || 'btn-lg'} ${typeClass || 'btn-secondary'} ${className || ''} ${disabled ? 'disabled' : ''}`;
-  return <Anchor className={fullClassName} onClick={onClick} dropdown={dropdown}>{children}</Anchor>;
+  return <Anchor className={fullClassName} {...rest}>{children}</Anchor>;
 };
 export default Button;
 
 export const Anchor = ({ className, onClick, children, dropdown }) => (
-  <a href="#" className={className} data-toggle={dropdown && 'dropdown'} onClick={e => {e.preventDefault(); e.stopPropagation(); onClick && onClick();}}>{children}</a>
+  <a href="#"
+    className={className}
+    data-toggle={dropdown && 'dropdown'}
+    onClick={e => {e.preventDefault(); e.stopPropagation(); onClick && onClick(e);}}>
+    {children}
+  </a>
 );
 
 export const DropdownMenu = ({ children }) => <ul className="dropdown-menu">{children}</ul>;

@@ -32,3 +32,6 @@ export { default as PagedDataTable } from './PagedDataTable';
 
 export * from './PagedDataTableBar';
 export { default as PagedDataTableBar } from './PagedDataTableBar';
+
+export * from './SelectionList';
+export { default as SelectionList } from './SelectionList';
