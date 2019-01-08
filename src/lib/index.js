@@ -13,7 +13,6 @@ export * from './ErrorPanel';
 export { default as ErrorPanel } from './ErrorPanel';
 
 export * from './history';
-export { default as History } from './history';
 
 export * from './LoadingIndicator';
 export { default as LoadingIndicator } from './LoadingIndicator';

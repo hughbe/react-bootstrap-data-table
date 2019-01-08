@@ -8,17 +8,17 @@
   "license": "MIT",
   "dependencies": {
     "babel-polyfill": "^6.23.0",
-    "react": "^15.6.1",
+    "react": "^16.7.0",
     "react-router": "^3.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-react": "^6.24.1"
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "@babel/preset-react": "^7.0.0"
   },
   "scripts": {
-    "build": "babel lib --presets env,react --plugins=transform-class-properties --out-dir build",
-    "prepublish": "npm run build"
+    "build": "babel lib --presets @babel/preset-react --plugins @babel/plugin-proposal-class-properties --out-dir build",
+    "prepublishOnly": "npm run build"
   }
 }
