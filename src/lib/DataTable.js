@@ -195,23 +195,25 @@ class DataTable extends Component {
   }
 
   render() {
-    const { striped, responsive, className, containerClassName, title, showHeader } = this.props;
+    const { striped, bordered, responsive, className, containerClassName, title, showHeader } = this.props;
 
     // The user can customize whether the table is striped or not and provide additional styles to the table.
-    const tableClassName = `table ${striped ? 'table-striped' : ''} ${className || ''}`;
+    const tableClassName = `table${striped ? ' table-striped' : ''}${bordered ? ' table-bordered' : ''}${className ? ' ' + className : ''}`;
 
     // Render the title, column names and then the rows.
+    const table = (
+      <table className={tableClassName}>
+        {showHeader && <DataTableHeader {...this.props} />}
+        <tbody>
+          {this.rows()}
+        </tbody>
+      </table>
+    );
+
     return (
-      <section className={`data-table ${containerClassName || ''}`} >
+      <section className={`data-table${containerClassName ? ' ' + containerClassName : ''}`} >
         {title && <h2>{title}</h2>}
-        <div className={responsive ? 'table-responsive' : ''}>
-          <table className={tableClassName}>
-            {showHeader && <DataTableHeader {...this.props} />}
-            <tbody>
-              {this.rows()}
-            </tbody>
-          </table>
-        </div>
+        {responsive ? <div className="table-responsive">{table}</div> : table}
       </section>
     );
   }
