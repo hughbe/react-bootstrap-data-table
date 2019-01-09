@@ -120,9 +120,23 @@ const getValue = (row, data) => {
   return String(data) || 'No Data';
 };
 
+const getClassName = (className, data, index, cellIndex) => {
+  if (!className) {
+    return undefined;
+  }
+
+  // The user can pass a function, e.g. d => 'class-name'.
+  if (typeof className === 'function') {
+    return className(data, index, cellIndex);
+  }
+  
+  // The user can pass a string, e.g. 'class-name'.
+  return String(className);
+}
+
 const DataTableRow = ({ mapping, data, showIndex, index, rowClass, onRowSelected, isSelectable, onRowHovered, selectionChecker, selectedIndex, onMouseDown, tabIndex, startIndex }) => {
   // The user can provide a handler that is triggered each time a row is clicked.
-  const selectableClass = isSelectable || onRowHovered ? 'selectable-row' : '';
+  const selectableClass = isSelectable || onRowHovered ? 'selectable-row ' : '';
   const handleRowClicked = (event) => {
     event && event.currentTarget.blur();
     event && event.stopPropagation();
@@ -131,22 +145,35 @@ const DataTableRow = ({ mapping, data, showIndex, index, rowClass, onRowSelected
 
   // The user can provide information as to whether a row is selected or not.
   const selectedCell = selectionChecker ? (selectionChecker(data, index) ? <td><span className="selected-cell">✓</span></td> : <td />) : undefined;
-  const selectedClass = selectedIndex === index ? 'selected-row' : '';
+  const selectedClass = selectedIndex === index ? 'selected-row ' : '';
   const actualTabIndex = tabIndex || (isSelectable || onRowSelected ? undefined : 0);
 
   // If the user pressed enter on the element, select it.
   const handleKeyPressed = (event) => event.key === 'Enter' && handleRowClicked();
 
   // The user can provide a custom class to the row.
-  const customizedRowClass = (rowClass && rowClass(data, index)) || '';
-  const rowClassName = `${selectableClass} ${selectedClass} ${customizedRowClass}`;
+  const customizedRowClass = getClassName(rowClass, data, index)
+  const additionalRowClass = customizedRowClass ? customizedRowClass + ' ' : '';
+  const rowClassName = `${selectableClass}${selectedClass}${additionalRowClass}`;
 
   // We need to add extra cells if we're showing the index on the left or the selection indicator on the right.
   return (
-    <tr className={rowClassName} onMouseOver={() => onRowHovered && onRowHovered(data, index, true)} onMouseOut={() => onRowHovered && onRowHovered(data, index, false)}
-      onMouseDown={() => onMouseDown(index)} onClick={handleRowClicked} tabIndex={actualTabIndex} onKeyPress={handleKeyPressed}>
+    <tr
+      className={rowClassName}
+      onMouseOver={() => onRowHovered && onRowHovered(data, index, true)}
+      onMouseOut={() => onRowHovered && onRowHovered(data, index, false)}
+      onMouseDown={() => onMouseDown(index)} onClick={handleRowClicked}
+      tabIndex={actualTabIndex} onKeyPress={handleKeyPressed}
+    >
       {showIndex && <td>{index + (startIndex || 1)}</td>}
-      {mapping.map((row, index) => <td key={row.key || index} className={row.cellClassName}>{getValue(row, data)}</td>)}
+      {mapping.map((row, cellIndex) => 
+        <td
+          key={row.key || cellIndex}
+          className={getClassName(row.cellClassName, data, index, cellIndex)}
+        >
+          {getValue(row, data)}
+        </td>
+      )}
       {selectedCell}
     </tr>
   );
